@@ -6,7 +6,6 @@ import matplotlib.pyplot as plt
 
 data = pd.read_csv('gov salaries.csv', header = 0)
 print(data)
-# data.preprocess_data()
 
 # preprocess_data
 data['Year'] = data['Year'].astype(int)
