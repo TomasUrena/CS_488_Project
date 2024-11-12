@@ -3,7 +3,7 @@
 import pandas as pd
 import re
 
-# Load the Excel file
+# Load the file
 file_path = (r"C:\Users\Carly\Desktop\school\CS 488\team project\New File to work with\gov salaries.xlsx")
 xls = pd.ExcelFile(file_path)
 
@@ -16,22 +16,20 @@ title_mapping = {str(wrong): str(correct) for wrong, correct in zip(titles_clean
 
 # Function to clean up each job title
 def clean_job_title(job_title):
-    job_title = str(job_title)  # Ensure job_title is a string
+    job_title = str(job_title)
 
     # Apply each replacement from the mapping
     for wrong, correct in title_mapping.items():
-        # Handle cases where '&' or other special characters need to be replaced
         if '&' in wrong:
             wrong = wrong.replace('&', 'and')
             correct = correct.replace('&', 'and')
         job_title = re.sub(rf'\b{re.escape(wrong)}\b', correct, job_title)
 
-    # Handle special cases with conditional replacements
-    # Replace "Insp" or "Inspe" based on their position
+    # Handle "Insp" or "Inspe" based on their position
     job_title = re.sub(r'\b(Insp|Inspe)\b(?=\s+\w)', 'Inspections', job_title)  # "Insp"/"Inspe" before another word
-    job_title = re.sub(r'\b(Insp|Inspe)\b$', 'Inspector', job_title)  # "Insp"/"Inspe" at the end
+    job_title = re.sub(r'\b(Insp|Inspe)\b$', 'Inspector', job_title)
 
-    # Remove periods followed by optional whitespace without affecting spaces between words
+    # Remove periods
     job_title = re.sub(r'\.\s*', ' ', job_title)
 
     # Replace multiple spaces with a single space
@@ -45,5 +43,5 @@ def clean_job_title(job_title):
 # Apply the function to the "Job Title" column and create a new column "Cleaned Job Titles"
 data_df['Cleaned Job Titles'] = data_df['Job Title'].apply(clean_job_title)
 
-# Save the updated Excel file
+# Save the updated file
 data_df.to_excel('updated_excel_file.xlsx', sheet_name='Data', index=False)
