@@ -6,11 +6,11 @@ import matplotlib.pyplot as plt
 
 data = pd.read_csv('gov salaries.csv', header = 0)
 
-# preprocess_data
+# preprocess the data
 data['Year'] = data['Year'].astype(int)
 data['Annual Wage'] = data['Annual Wage'].astype(float)
 
-# trend_analysis
+# trend analysis for Average Annual Wage
 plt.figure(figsize = (12, 6))
 wageByYear = data.groupby('Year')['Average Annual Wage'].mean()
 plt.plot(wageByYear.index, wageByYear.values, marker = 'o')
@@ -20,4 +20,11 @@ plt.ylabel("Average Annual Wage")
 plt.grid(True)
 plt.show()
 
-# Continue with graphing the number of employees per year
+# trend analysis for Number of Employees
+plt.figure(figsize = (12, 6))
+plt.plot(data['Year'], data['Number of Employees'], marker = 'o')
+plt.title("Number of Employees Progression (2016-2023)")
+plt.xlabel("Year")
+plt.ylabel("Employees")
+plt.grid(True)
+plt.show()
