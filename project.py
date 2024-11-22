@@ -4,15 +4,15 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-data = pd.read_csv('gov salaries.csv', header = 0)
+data = pd.read_csv('gov salaries_Cleaned.csv', header = 0)
 
 # preprocess the data
 data['Year'] = data['Year'].astype(int)
 data['Annual Wage'] = data['Annual Wage'].astype(float)
 
-# trend analysis for Average Annual Wage
+# trend analysis for Annual Wage
 plt.figure(figsize = (12, 6))
-wageByYear = data.groupby('Year')['Average Annual Wage'].mean()
+wageByYear = data.groupby('Year')['Annual Wage'].mean()
 plt.plot(wageByYear.index, wageByYear.values, marker = 'o')
 plt.title("Average Annual Wage Progression (2016-2023)")
 plt.xlabel("Year")
@@ -22,9 +22,12 @@ plt.show()
 
 # trend analysis for Number of Employees
 plt.figure(figsize = (12, 6))
-plt.plot(data['Year'], data['Number of Employees'], marker = 'o')
+numEmps = data.groupby('Year')['Number of Employees'].max()
+plt.plot(numEmps.index, numEmps.values, marker = 'o')
 plt.title("Number of Employees Progression (2016-2023)")
 plt.xlabel("Year")
 plt.ylabel("Employees")
 plt.grid(True)
 plt.show()
+
+print(data.describe())
