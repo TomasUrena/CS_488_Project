@@ -31,3 +31,54 @@ plt.grid(True)
 plt.show()
 
 print(data.describe())
+print()
+
+# Contract Type 
+plt.figure(figsize = (12, 6))
+contractType = data.groupby('Contract Type')['Annual Wage'].mean()
+plt.bar(contractType.index, contractType.values)
+plt.title("Average Annual Wage By Contract Type")
+plt.xlabel("Contract Types")
+plt.ylabel("Average Annual Wage")
+plt.tight_layout()
+plt.show()
+
+# Cleaned Job Titles NOT FINISHED 
+plt.figure(figsize = (12, 6))
+cjt = data.groupby('Cleaned Job Titles')['Annual Wage'].mean()
+plt.bar(cjt.index, cjt.values)
+plt.title("Average Annual Wage By Job Titles")
+plt.xlabel("Job Titles")
+plt.ylabel("Average Annual Wage")
+plt.tight_layout()
+plt.show()
+
+# Role NOT FINISHED 
+plt.figure(figsize = (12, 6))
+role = data.groupby('Role')['Annual Wage'].mean()
+plt.bar(role.index, role.values)
+plt.title("Average Annual Wage By Role")
+plt.xlabel("Roles")
+plt.ylabel("Average Annual Wage")
+plt.tight_layout()
+plt.show()
+
+# Department NOT FINISHED 
+plt.figure(figsize = (12, 6))
+department = data.groupby('Department')['Annual Wage'].mean()
+plt.bar(department.index, department.values)
+plt.title("Average Annual Wage By Department")
+plt.xlabel("Department")
+plt.ylabel("Average Annual Wage")
+plt.tight_layout()
+plt.show()
+
+# Area of Governance  
+plt.figure(figsize = (12, 6))
+governace = data.groupby('Area of Governance')['Annual Wage'].mean()
+plt.bar(governace.index, governace.values)
+plt.title("Average Annual Wage By Area of Governance")
+plt.xlabel("Area of Governance")
+plt.ylabel("Average Annual Wage")
+plt.tight_layout()
+plt.show()
