@@ -43,13 +43,18 @@ plt.ylabel("Average Annual Wage")
 plt.tight_layout()
 plt.show()
 
-# Cleaned Job Titles NOT FINISHED 
+# Cleaned Job Titles 
 plt.figure(figsize = (12, 6))
 cjt = data.groupby('Cleaned Job Titles')['Annual Wage'].mean()
-plt.bar(cjt.index, cjt.values)
+cityMan = cjt['City Manager']
+cjt = cjt.drop('City Manager')
+plt.bar('City Manager', cityMan, color = 'blue', label = 'City Manager') 
+plt.bar(cjt.index, cjt.values, color = 'grey', label = 'Other') 
 plt.title("Average Annual Wage By Job Titles")
 plt.xlabel("Job Titles")
 plt.ylabel("Average Annual Wage")
+plt.xticks([], [])
+plt.legend()
 plt.tight_layout()
 plt.show()
 
@@ -60,16 +65,18 @@ plt.bar(role.index, role.values)
 plt.title("Average Annual Wage By Role")
 plt.xlabel("Roles")
 plt.ylabel("Average Annual Wage")
+plt.xticks(rotation = 90, ha = 'right')
 plt.tight_layout()
 plt.show()
 
-# Department NOT FINISHED 
+# Department 
 plt.figure(figsize = (12, 6))
 department = data.groupby('Department')['Annual Wage'].mean()
 plt.bar(department.index, department.values)
 plt.title("Average Annual Wage By Department")
 plt.xlabel("Department")
 plt.ylabel("Average Annual Wage")
+plt.xticks(rotation = 45, ha = 'right')
 plt.tight_layout()
 plt.show()
 
