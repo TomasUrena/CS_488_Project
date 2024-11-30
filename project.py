@@ -1,6 +1,6 @@
 # Tomas Urena
-# 11/08/2024
-# Team Project 
+# 11/29/2024
+# Team Project
 import pandas as pd
 import matplotlib.pyplot as plt
 
@@ -83,19 +83,6 @@ plt.xticks([], [])
 plt.legend()
 plt.tight_layout()
 plt.show()
-
-'''
-# Role: Employee Count // NOT FINISHED 
-plt.figure(figsize = (12, 6))
-role = data.groupby('Role')['Role'].count()
-plt.bar(role.index, role.values)
-plt.title("Employee Count By Role")
-plt.xlabel("Roles")
-plt.ylabel("Number Of Employees")
-plt.xticks(rotation = 90, ha = 'right')
-plt.tight_layout()
-plt.show()
-'''
 
 # Department: Average Wage 
 plt.figure(figsize = (10, 12))
